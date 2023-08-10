@@ -14,7 +14,7 @@ class PostModelFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'body'=>$this->faker->sentence(20),
         ];
     }
 }

@@ -1,21 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<form action="{{route('posts')}}" method="post" class="w-50 mx-auto pt-2 " >
-@csrf
-<div class="bg-light p-4" id="post">
-    <div class="mb-3">
-      <textarea class="form-control mx-auto" name="body" id="" rows="3" placeholder="What's on your mind?"></textarea>
-      @error('body')
-              <p class="text-danger w-75">
-                  {{$message}}
-              </p>
-      @enderror
-    </div>
-    <div class="">
-      <input type="submit" value="Post" class="btn btn-info">
-    </div>
-</div>   
-</form>
 <div class="w-50 bg-light mx-auto px-2 p-4 mb-2" id="post">
 
   @if ($posts->count())
@@ -52,14 +36,11 @@
           @csrf
           @method('DELETE')
           <input type="submit" class="btn btn-warning" value='Unlike'/>
-          {{-- <span>
-            {{$post->likes->count()}}
-          </span> --}}
         </form>
       @endif
       <span>
         {{$post->likes->count()}}
-        @if ($post->likes->count()<2 )
+        @if ($post->likes->count()<2)
             like
         @else
             likes
@@ -67,7 +48,6 @@
       </span>
     </div>
   </div>
-      
   @endforeach
   <div>
     {{$posts->links()}} 
